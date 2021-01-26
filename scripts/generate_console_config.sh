@@ -10,8 +10,8 @@ SCRIPT_DIR=`cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P`
 #export TON_NODE_ROOT_DIR="/ton-node"
 #export TON_NODE_CONFIGS_DIR="${TON_NODE_ROOT_DIR}/configs"
 #export TON_NODE_TOOLS_DIR="${TON_NODE_ROOT_DIR}/tools"
-#export TON_NODE_LOGS_DIR="${TON_NODE_ROOT_DIR}/logs"
-#export RNODE_CONSOLE_SERVER_PORT="3031"
+export TON_NODE_LOGS_DIR="${TON_NODE_ROOT_DIR}/logs"
+export RNODE_CONSOLE_SERVER_PORT="3031"
 
 HOSTNAME=$(hostname -f)
 TMP_DIR="/tmp/$(basename "$0" .sh)_$$"
@@ -26,7 +26,7 @@ jq ".control_server_ip_port = \"${RNODE_CONSOLE_SERVER_PORT}\"" "${TON_NODE_CONF
 cp "${TMP_DIR}/default_config.json.tmp" "${TON_NODE_CONFIGS_DIR}/default_config.json"
 
 # Generate initial config.json
-cd "${TON_NODE_ROOT_DIR}" && "${TON_NODE_ROOT_DIR}/ton_node" --configs "${TON_NODE_CONFIGS_DIR}" --ckey "$(cat "${TON_NODE_CONFIGS_DIR}/console_client_public.json")" &
+cd "${TON_NODE_ROOT_DIR}" && "${TON_NODE_ROOT_DIR}/ton_node_no_kafka" --configs "${TON_NODE_CONFIGS_DIR}" --ckey "$(cat "${TON_NODE_CONFIGS_DIR}/console_client_public.json")" &
 
 sleep 10
 

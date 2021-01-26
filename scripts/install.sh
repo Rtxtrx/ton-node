@@ -20,6 +20,18 @@ export TON_NODE_TOOLS_GITHUB_COMMIT_ID="master"
 export TONOS_CLI_GITHUB_REPO="https://github.com/tonlabs/tonos-cli.git"
 export TONOS_CLI_GITHUB_COMMIT_ID="master"
 
+#apt-get update && apt-get install -y \
+#    gpg \
+#    tar \
+#    cmake \
+#    build-essential \
+#    pkg-config \
+#    libssl-dev \
+#    libtool \
+#    m4 \
+#    automake \
+#    clang \
+#    git
 
 
 mkdir -p "${RUST_BUILD_DIR}/ton-node/build"
