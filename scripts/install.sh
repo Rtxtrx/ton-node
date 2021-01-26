@@ -35,7 +35,7 @@ cd "${RUST_BUILD_DIR}/ton-node/build" && git clone --recursive "${TONOS_CLI_GITH
 cd "${RUST_BUILD_DIR}/ton-node/build/tonos-cli" && git checkout "${TONOS_CLI_GITHUB_COMMIT_ID}" && cargo build --release
 
 mkdir -p ${RUST_BUILD_DIR}/tools
-mkdir -p ${RUST_BUILD_DIR}/configs
+#mkdir -p ${RUST_BUILD_DIR}/configs
 mkdir -p ${RUST_BUILD_DIR}/logs
 cp ${RUST_BUILD_DIR}/ton-node/build/ton-node/target/release/ton_node ${RUST_BUILD_DIR}/ton_node
 cp ${RUST_BUILD_DIR}/ton-node/build/ton-node/ton-labs-node-tools/target/release/console ${RUST_BUILD_DIR}/tools/console
