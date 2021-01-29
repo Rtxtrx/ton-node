@@ -20,18 +20,21 @@ export TON_NODE_TOOLS_GITHUB_COMMIT_ID="master"
 export TONOS_CLI_GITHUB_REPO="https://github.com/tonlabs/tonos-cli.git"
 export TONOS_CLI_GITHUB_COMMIT_ID="master"
 
-#apt-get update && apt-get install -y \
-#    gpg \
-#    tar \
-#    cmake \
-#    build-essential \
-#    pkg-config \
-#    libssl-dev \
-#    libtool \
-#    m4 \
-#    automake \
-#    clang \
-#    git
+sudo apt update && sudo apt install -y \
+    gpg \
+    tar \
+    cmake \
+    build-essential \
+    pkg-config \
+    libssl-dev \
+    libtool \
+    m4 \
+    automake \
+    clang \
+    git \
+    curl \
+    gnupg2 \
+    librdkafka-dev
 
 
 mkdir -p "${RUST_BUILD_DIR}/ton-node/build"
@@ -53,4 +56,8 @@ cp ${RUST_BUILD_DIR}/ton-node/build/ton-node/target/release/ton_node ${RUST_BUIL
 cp ${RUST_BUILD_DIR}/ton-node/build/ton-node/ton-labs-node-tools/target/release/console ${RUST_BUILD_DIR}/tools/console
 cp ${RUST_BUILD_DIR}/ton-node/build/ton-node/ton-labs-node-tools/target/release/keygen ${RUST_BUILD_DIR}/tools/keygen
 cp ${RUST_BUILD_DIR}/ton-node/build/tonos-cli/target/release/tonos-cli ${RUST_BUILD_DIR}/tools/tonos-cli
+echo "INFO: build node... DONE"
+echo "INFO: pull TON Labs contracts..."
+git clone https://github.com/tonlabs/ton-labs-contracts.git "${RUST_BUILD_DIR}/ton-labs-contracts"
+echo "INFO: pull TON Labs contracts... DONE"
 
