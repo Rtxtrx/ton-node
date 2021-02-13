@@ -59,7 +59,7 @@ init_env() {
     TON_BUILD_DIR=""
 
     if [ "${RUST_NET_ENABLE}" = "yes" ]; then
-        TON_NODE_ROOT="~/ton-node"
+        TON_NODE_ROOT="/ton-node"
         UTILS_DIR="${TON_NODE_ROOT}/tools"
         CONFIGS_DIR="${TON_NODE_ROOT}/configs"
         KEYS_DIR="${CONFIGS_DIR}/keys"

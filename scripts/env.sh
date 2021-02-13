@@ -4,7 +4,7 @@
 SCRIPT_DIR=`cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P`
 SRC_TOP_DIR=$(cd "${SCRIPT_DIR}/../" && pwd -P)
 export SRC_TOP_DIR
-export TON_NODE_ROOT_DIR="${SRC_TOP_DIR}"
+export TON_NODE_ROOT_DIR="/ton-node"
 export TON_NODE_CONFIGS_DIR="${TON_NODE_ROOT_DIR}/configs"
 export TON_NODE_TOOLS_DIR="${TON_NODE_ROOT_DIR}/tools"
 export TON_NODE_SCRIPTS_DIR="${TON_NODE_ROOT_DIR}/scripts"
