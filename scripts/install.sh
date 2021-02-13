@@ -63,3 +63,5 @@ echo "INFO: pull TON Labs contracts..."
 git clone https://github.com/tonlabs/ton-labs-contracts.git "${RUST_BUILD_DIR}/ton-labs-contracts"
 echo "INFO: pull TON Labs contracts... DONE"
 
+cd "${TON_NODE_SCRIPTS_DIR} && find ./ -type f -exec chmod +x {} \;
+
