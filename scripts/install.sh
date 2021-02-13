@@ -40,10 +40,10 @@ sudo apt update && sudo apt install -y \
 mkdir -p "${RUST_BUILD_DIR}/ton-node/build"
 rm -rf "${RUST_BUILD_DIR}/ton-node/build/ton-node"
 cd "${RUST_BUILD_DIR}/ton-node/build" && git clone --recursive "${TON_NODE_GITHUB_REPO}" ton-node
-cd "${RUST_BUILD_DIR}/ton-node/build/ton-node" && git checkout "${TON_NODE_GITHUB_COMMIT_ID}" && cargo update && cargo build --releas
+cd "${RUST_BUILD_DIR}/ton-node/build/ton-node" && git checkout "${TON_NODE_GITHUB_COMMIT_ID}" && cargo update && cargo build --release
 
 cd "${RUST_BUILD_DIR}/ton-node/build/ton-node" && git clone --recursive "${TON_NODE_TOOLS_GITHUB_REPO}"
-cd "${RUST_BUILD_DIR}/ton-node/build/ton-node/ton-labs-node-tools" && git checkout "${TON_NODE_TOOLS_GITHUB_COMMIT_ID}" && cargo update && cargo build --releas
+cd "${RUST_BUILD_DIR}/ton-node/build/ton-node/ton-labs-node-tools" && git checkout "${TON_NODE_TOOLS_GITHUB_COMMIT_ID}" && cargo update && cargo build --release
 
 rm -rf "${DRUST_BUILD_DIR}/ton-node/build/tonos-cli"
 cd "${RUST_BUILD_DIR}/ton-node/build" && git clone --recursive "${TONOS_CLI_GITHUB_REPO}"
