@@ -1,15 +1,13 @@
+  
 #!/bin/bash -eEx
 
 if [ "$DEBUG" = "yes" ]; then
     set -x
 fi
-# shellcheck source=env.sh
-SCRIPT_DIR=`cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P`
-. "${SCRIPT_DIR}/env.sh"
 
-#export TON_NODE_ROOT_DIR="/ton-node"
-#export TON_NODE_CONFIGS_DIR="${TON_NODE_ROOT_DIR}/configs"
-#export TON_NODE_TOOLS_DIR="${TON_NODE_ROOT_DIR}/tools"
+export TON_NODE_ROOT_DIR="/ton-node"
+export TON_NODE_CONFIGS_DIR="${TON_NODE_ROOT_DIR}/configs"
+export TON_NODE_TOOLS_DIR="${TON_NODE_ROOT_DIR}/tools"
 export TON_NODE_LOGS_DIR="${TON_NODE_ROOT_DIR}/logs"
 export RNODE_CONSOLE_SERVER_PORT="3031"
 
@@ -22,7 +20,7 @@ mkdir -p "${TMP_DIR}"
 cat "${TON_NODE_CONFIGS_DIR}/${HOSTNAME}_console_client_keys.json"
 jq -c .public "${TON_NODE_CONFIGS_DIR}/${HOSTNAME}_console_client_keys.json" >"${TON_NODE_CONFIGS_DIR}/console_client_public.json"
 
-jq ".control_server_port = \"${RNODE_CONSOLE_SERVER_PORT}\"" "${TON_NODE_CONFIGS_DIR}/default_config.json" >"${TMP_DIR}/default_config.json.tmp"
+jq ".control_server_port = ${RNODE_CONSOLE_SERVER_PORT}" "${TON_NODE_CONFIGS_DIR}/default_config.json" >"${TMP_DIR}/default_config.json.tmp"
 cp "${TMP_DIR}/default_config.json.tmp" "${TON_NODE_CONFIGS_DIR}/default_config.json"
 
 # Generate initial config.json
