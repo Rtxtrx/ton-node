@@ -40,7 +40,7 @@ sudo apt update && sudo apt install -y \
 mkdir -p "${RUST_BUILD_DIR}/build"
 rm -rf "${RUST_BUILD_DIR}/build/ton-node"
 cd "${RUST_BUILD_DIR}/build" && git clone --recursive "${TON_NODE_GITHUB_REPO}"
-cd "${RUST_BUILD_DIR}/build/ton-node" && git checkout "${TON_NODE_GITHUB_COMMIT_ID}" && cargo update && cargo build --release
+cd "${RUST_BUILD_DIR}/build/ton-labs-node" && git checkout "${TON_NODE_GITHUB_COMMIT_ID}" && cargo update && cargo build --release
 
 rm -rf "${DRUST_BUILD_DIR}/build/ton-labs-node-tools"
 cd "${RUST_BUILD_DIR}/build" && git clone --recursive "${TON_NODE_TOOLS_GITHUB_REPO}"
@@ -53,7 +53,7 @@ cd "${RUST_BUILD_DIR}/build/tonos-cli" && git checkout "${TONOS_CLI_GITHUB_COMMI
 mkdir -p ${RUST_BUILD_DIR}/tools
 mkdir -p ${RUST_BUILD_DIR}/configs
 mkdir -p ${RUST_BUILD_DIR}/logs
-cp ${RUST_BUILD_DIR}/build/ton-node/target/release/ton_node ${RUST_BUILD_DIR}/ton_node
+cp ${RUST_BUILD_DIR}/build/ton-labs-node/target/release/ton_node ${RUST_BUILD_DIR}/ton_node
 cp ${RUST_BUILD_DIR}/build/ton-labs-node-tools/target/release/console ${RUST_BUILD_DIR}/tools/console
 cp ${RUST_BUILD_DIR}/build/ton-labs-node-tools/target/release/keygen ${RUST_BUILD_DIR}/tools/keygen
 cp ${RUST_BUILD_DIR}/build/tonos-cli/target/release/tonos-cli ${RUST_BUILD_DIR}/tools/tonos-cli
