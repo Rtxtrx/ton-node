@@ -37,25 +37,26 @@ sudo apt update && sudo apt install -y \
     librdkafka-dev
 
 
-mkdir -p "${RUST_BUILD_DIR}/ton-node/build"
-rm -rf "${RUST_BUILD_DIR}/ton-node/build/ton-node"
-cd "${RUST_BUILD_DIR}/ton-node/build" && git clone --recursive "${TON_NODE_GITHUB_REPO}" ton-node
-cd "${RUST_BUILD_DIR}/ton-node/build/ton-node" && git checkout "${TON_NODE_GITHUB_COMMIT_ID}" && cargo update && cargo build --release
+mkdir -p "${RUST_BUILD_DIR}/build"
+rm -rf "${RUST_BUILD_DIR}/build/ton-node"
+cd "${RUST_BUILD_DIR}/build" && git clone --recursive "${TON_NODE_GITHUB_REPO}"
+cd "${RUST_BUILD_DIR}/build/ton-node" && git checkout "${TON_NODE_GITHUB_COMMIT_ID}" && cargo update && cargo build --release
 
-cd "${RUST_BUILD_DIR}/ton-node/build/ton-node" && git clone --recursive "${TON_NODE_TOOLS_GITHUB_REPO}"
-cd "${RUST_BUILD_DIR}/ton-node/build/ton-node/ton-labs-node-tools" && git checkout "${TON_NODE_TOOLS_GITHUB_COMMIT_ID}" && cargo update && cargo build --release
+rm -rf "${DRUST_BUILD_DIR}/build/ton-labs-node-tools"
+cd "${RUST_BUILD_DIR}/build" && git clone --recursive "${TON_NODE_TOOLS_GITHUB_REPO}"
+cd "${RUST_BUILD_DIR}/build/ton-labs-node-tools" && git checkout "${TON_NODE_TOOLS_GITHUB_COMMIT_ID}" && cargo update && cargo build --release
 
-rm -rf "${DRUST_BUILD_DIR}/ton-node/build/tonos-cli"
-cd "${RUST_BUILD_DIR}/ton-node/build" && git clone --recursive "${TONOS_CLI_GITHUB_REPO}"
-cd "${RUST_BUILD_DIR}/ton-node/build/tonos-cli" && git checkout "${TONOS_CLI_GITHUB_COMMIT_ID}" && cargo update && cargo build --release
+rm -rf "${DRUST_BUILD_DIR}/build/tonos-cli"
+cd "${RUST_BUILD_DIR}/build" && git clone --recursive "${TONOS_CLI_GITHUB_REPO}"
+cd "${RUST_BUILD_DIR}/build/tonos-cli" && git checkout "${TONOS_CLI_GITHUB_COMMIT_ID}" && cargo update && cargo build --release
 
 mkdir -p ${RUST_BUILD_DIR}/tools
-#mkdir -p ${RUST_BUILD_DIR}/configs
+mkdir -p ${RUST_BUILD_DIR}/configs
 mkdir -p ${RUST_BUILD_DIR}/logs
-cp ${RUST_BUILD_DIR}/ton-node/build/ton-node/target/release/ton_node ${RUST_BUILD_DIR}/ton_node
-cp ${RUST_BUILD_DIR}/ton-node/build/ton-node/ton-labs-node-tools/target/release/console ${RUST_BUILD_DIR}/tools/console
-cp ${RUST_BUILD_DIR}/ton-node/build/ton-node/ton-labs-node-tools/target/release/keygen ${RUST_BUILD_DIR}/tools/keygen
-cp ${RUST_BUILD_DIR}/ton-node/build/tonos-cli/target/release/tonos-cli ${RUST_BUILD_DIR}/tools/tonos-cli
+cp ${RUST_BUILD_DIR}/build/ton-node/target/release/ton_node ${RUST_BUILD_DIR}/ton_node
+cp ${RUST_BUILD_DIR}/build/ton-labs-node-tools/target/release/console ${RUST_BUILD_DIR}/tools/console
+cp ${RUST_BUILD_DIR}/build/ton-labs-node-tools/target/release/keygen ${RUST_BUILD_DIR}/tools/keygen
+cp ${RUST_BUILD_DIR}/build/tonos-cli/target/release/tonos-cli ${RUST_BUILD_DIR}/tools/tonos-cli
 echo "INFO: build node... DONE"
 echo "INFO: pull TON Labs contracts..."
 git clone https://github.com/tonlabs/ton-labs-contracts.git "${RUST_BUILD_DIR}/ton-labs-contracts"
