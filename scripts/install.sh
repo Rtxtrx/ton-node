@@ -34,7 +34,8 @@ sudo apt update && sudo apt install -y \
     git \
     curl \
     gnupg2 \
-    librdkafka-dev
+    librdkafka-dev \
+	jq
 
 
 mkdir -p "${RUST_BUILD_DIR}/build"
