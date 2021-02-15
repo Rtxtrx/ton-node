@@ -13,9 +13,8 @@ echo "INFO: CONFIGS_PATH = ${CONFIGS_PATH}"
 echo "INFO: \$1 = $1"
 echo "INFO: \$2 = $2"
 
-function f_get_ton_global_config_json() {
-    curl -sS "https://raw.githubusercontent.com/tonlabs/rustnet.ton.dev/main/configs/ton-global.config.json" -o "${TON_NODE_CONFIGS_DIR}/ton-global.config.json"
-}
+curl -sS "https://raw.githubusercontent.com/tonlabs/rustnet.ton.dev/main/configs/ton-global.config.json" -o "${TON_NODE_CONFIGS_DIR}/ton-global.config.json"
+
 
 cd "${TON_NODE_ROOT_DIR}" && "${TON_NODE_ROOT_DIR}/ton_node" --configs "${CONFIGS_PATH}" ${TON_NODE_EXTRA_ARGS} >>${TON_NODE_LOGS_DIR}/output.log 2>&1 &
 

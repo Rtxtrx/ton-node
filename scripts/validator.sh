@@ -4,6 +4,11 @@ set -o pipefail
 
 DEBUG=yes
 
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)
+# shellcheck source=env.sh
+. "${SCRIPT_DIR}/env.sh"
+
+
 # Stake value for fixed staking mode (not applicable for dynamic staking mode)
 STAKE="$1"
 LOCK_FILE="/tmp/validator.lock"
